@@ -1,0 +1,7 @@
+name: Custom Registration
+type: module
+description: Allows users to register with custom fields.
+core_version_requirement: ^9 || ^10
+package: Custom
+dependencies:
+  - address

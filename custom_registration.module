@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function custom_registration_theme($existing, $type, $theme, $path) {
+  return [
+    'thank_you_page' => [
+      'variables' => [],
+    ],
+    'register_success_mail' => [
+      'variables' => [
+        'user' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_mail().
+ */
+function custom_registration_mail($key, &$message, $params) {
+  /** @var \Drupal\Core\Render\RendererInterface $renderer */
+  $renderer = Drupal::service('renderer');
+
+  if (isset($params['headers'])) {
+    $message['headers'] = array_merge($message['headers'], $params['headers']);
+  }
+  if (!empty($params['from'])) {
+    $message['from'] = $params['from'];
+  }
+
+  $message['subject'] = $params['subject'];
+  $message['body'][] = $renderer->render($params['body']);
+}

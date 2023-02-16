@@ -1,0 +1,15 @@
+custom_registration.register:
+  path: '/register'
+  defaults:
+    _form: '\Drupal\custom_registration\Form\CustomRegistrationForm'
+    _title: 'Register'
+  requirements:
+    _access_user_register: 'TRUE'
+
+custom_registration.thank_you:
+  path: '/thank-you'
+  defaults:
+    _controller: '\Drupal\custom_registration\Controller\RegistrationThankYouController::thankYou'
+    _title: 'Thank you'
+  requirements:
+    _permission: 'access content'

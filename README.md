@@ -1,1 +1,1 @@
-# custom_registration
+# Custom Registration Module
